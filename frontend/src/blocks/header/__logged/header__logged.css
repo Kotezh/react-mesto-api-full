@@ -1,0 +1,12 @@
+.header__logged {
+  display: flex;
+  flex-direction: row;
+}
+
+
+@media screen and (max-width: 625px) {
+  .header__logged {
+    flex-direction: column;
+    margin-bottom: 22px;
+  }
+}

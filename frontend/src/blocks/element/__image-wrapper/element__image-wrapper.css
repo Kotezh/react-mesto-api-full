@@ -1,0 +1,7 @@
+.element__image-wrapper {
+  position: relative;
+  padding-top: 100%;
+  height: 0;
+  margin: 0 0 20px 0;
+  width: 100%;
+}

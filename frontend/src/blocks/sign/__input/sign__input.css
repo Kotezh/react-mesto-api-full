@@ -1,0 +1,24 @@
+.sign__input {
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #FFFFFF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 0 10px 0;
+  margin: 0;
+  background-color: #000000;
+}
+
+.sign__input::placeholder { 
+  color: #CCCCCC;
+  font-size: 14px;
+  opacity: 1; transition: opacity 0.3s ease;
+ }
+
+ .sign__input:focus::placeholder { 
+  opacity: 0; transition: opacity 0.3s ease;
+ }

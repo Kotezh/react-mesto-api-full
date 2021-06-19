@@ -1,0 +1,9 @@
+.element__popup {
+  transition: opacity 1s ease-in-out;
+}
+
+.element__popup:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  
+}

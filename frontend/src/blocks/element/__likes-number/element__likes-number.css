@@ -1,0 +1,8 @@
+.element__likes-number {
+  font-size: 13px;
+  line-height: 1.21;
+  font-weight: 400;
+  color: #000000;
+  margin: 3px auto 0;
+  padding: 0;
+}

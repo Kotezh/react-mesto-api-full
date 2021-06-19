@@ -1,0 +1,11 @@
+.popup__full-image {
+  margin: auto;
+  padding: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  max-width: 75vw;
+  max-height: 70vh;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.15);
+}

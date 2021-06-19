@@ -1,0 +1,12 @@
+.element__heart {
+  -webkit-transition: opacity 200ms ease-in-out;
+  -o-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+  overflow: hidden;
+  margin: 0;
+}
+
+.element__heart:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

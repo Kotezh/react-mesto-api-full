@@ -1,0 +1,14 @@
+.add-button {
+  min-width: 22px;
+  min-height: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+@media screen and (max-width: 625px) {
+  .add-button {
+    min-width: 16px;
+    min-height: 16px;
+  }
+}

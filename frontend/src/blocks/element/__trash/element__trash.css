@@ -1,0 +1,17 @@
+.element__trash {
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  min-width: 18px;
+  min-height: 19px;
+  fill: none;
+  -webkit-transition: opacity 200ms ease-in-out, fill 200ms ease-in-out;
+  -o-transition: opacity 200ms ease-in-out, fill 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out, fill 200ms ease-in-out;
+  display: none;
+}
+
+.element__trash:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

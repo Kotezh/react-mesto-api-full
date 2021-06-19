@@ -1,0 +1,22 @@
+.page__container {
+  padding: 0 0 60px;
+  max-width: 880px;
+  min-width: 320px;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 625px) {
+  .page__container {
+    padding: 0 0 33px;
+  }
+}

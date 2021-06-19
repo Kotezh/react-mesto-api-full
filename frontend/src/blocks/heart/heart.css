@@ -1,0 +1,13 @@
+.heart {
+  background: url(./heart.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  width: 21px;
+  height: 18px;
+}
+
+
+.heart:focus {
+  outline: -webkit-focus-ring-color auto 0;
+}
