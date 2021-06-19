@@ -78,12 +78,11 @@ class Api {
 }
 
 const config = {
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-21",
+  baseUrl: "https://api.kotezh.mesto.nomoredomains.monster",
   headers: {
-    authorization: "d8273a5f-78fb-4b97-a734-1bffa72aa238",
+    // authorization: "d8273a5f-78fb-4b97-a734-1bffa72aa238",
     "Content-Type": "application/json",
   },
-  credentials: 'include',
 };
 
 const api = new Api(config);
