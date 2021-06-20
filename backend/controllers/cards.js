@@ -5,6 +5,8 @@ const NotOwnerError = require('../errors/owner-err');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .populate('likes')
+    .populate('owner')
     .then((cards) => res.status(200).send({ data: cards }))
     .catch(next);
 };
@@ -14,7 +16,11 @@ module.exports.createCard = (req, res, next) => {
   Card.create({
     name, link, owner: req.user._id,
   })
-    .then((card) => res.status(201).send({ data: card }))
+    .then((data) => {
+      const card = data;
+      card.owner = req.user;
+      res.status(201).send({ data: card });
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         throw new RequestError('Переданы некорректные данные');
@@ -44,6 +50,8 @@ module.exports.likeCard = (req, res, next) => {
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
     { new: true },
   )
+    .populate('likes')
+    .populate('owner')
     .orFail(new Error('PageNotFound'))
     .then((card) => res.status(200).send({ data: card }))
     .catch((err) => {
@@ -63,6 +71,8 @@ module.exports.dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } }, // убрать _id из массива
     { new: true },
   )
+    .populate('likes')
+    .populate('owner')
     .orFail(new Error('PageNotFound'))
     .then((card) => res.status(200).send({ data: card }))
     .catch((err) => {
