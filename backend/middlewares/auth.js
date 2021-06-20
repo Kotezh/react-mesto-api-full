@@ -6,9 +6,11 @@ const DataError = require('../errors/data-err');
 module.exports = (req, res, next) => {
   const jwtSecret = NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key';
   const token = req.cookies.jwt;
+  console.log(token)
   let payload;
   try {
     payload = jwt.verify(token, jwtSecret);
+    console.log(payload)
   } catch (err) {
     throw new DataError('Неправильные почта или пароль');
   }
