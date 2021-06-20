@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const { NODE_ENV, JWT_SECRET } = process.env;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -25,8 +26,8 @@ module.exports.login = (req, res, next) => {
           maxAge: 604800000,
           httpOnly: true,
         })
-        .send({token: 'ok'});
-        // .end();
+        .send({ token: 'ok' });
+      // .end();
     })
     .catch(() => {
       throw new DataError('Неправильные почта или пароль');
@@ -142,4 +143,3 @@ module.exports.updateAvatar = (req, res, next) => {
     })
     .catch(next);
 };
-

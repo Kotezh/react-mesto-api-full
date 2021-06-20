@@ -1,7 +1,8 @@
 const express = require('express');
 
 require('dotenv').config();
-const { PORT = 3000, NODE_ENV, JWT_SECRET } = process.env;
+
+const { PORT = 3000 } = process.env;
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -26,9 +27,9 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 const options = {
   origin: [
-    "http://kotezh.mesto.nomoredomains.monster",
-    "https://kotezh.mesto.nomoredomains.monster",
-    "http://localhost:3000"
+    'http://kotezh.mesto.nomoredomains.monster',
+    'https://kotezh.mesto.nomoredomains.monster',
+    'http://localhost:3000',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   preflightContinue: false,
