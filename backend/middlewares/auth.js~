@@ -9,8 +9,10 @@ module.exports = (req, res, next) => {
   let payload;
   try {
     payload = jwt.verify(token, jwtSecret);
+    throw new Error(`payload = ${payload}`);
   } catch (err) {
-    throw new DataError('Неправильные почта или пароль');
+    throw new DataError(`payload = ${JSON.stringify(payload)}`);
+    // throw new DataError('Неправильные почта или пароль');
   }
   req.user = payload;
   next();
