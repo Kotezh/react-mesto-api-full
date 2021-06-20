@@ -71,7 +71,7 @@ export default function App() {
     api
       .setUserInfo(data.name, data.about)
       .then((res) => {
-        setCurrentUser({ ...currentUser, name: res.name, about: res.about });
+        setCurrentUser({ ...currentUser, name: res.data.name, about: res.data.about });
         setIsEditProfilePopupOpen(false);
       })
       .catch((err) => {
@@ -83,7 +83,7 @@ export default function App() {
     api
       .setNewAvatar(newAvatar)
       .then((res) => {
-        setCurrentUser({ ...currentUser, avatar: res.avatar });
+        setCurrentUser({ ...currentUser, avatar: res.data.avatar });
         setISEditAvatarPopupOpen(false);
       })
       .catch((err) => {
@@ -122,7 +122,7 @@ export default function App() {
     api
       .addNewCard(data.title, data.link)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         setIsAddPlacePopupOpen(false);
 
       })
