@@ -40,8 +40,8 @@ export default function App() {
   function getInfo() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([data, initialCards]) => {
-        setCurrentUser(data);
-        setCards(initialCards);
+        setCurrentUser(data.data);
+        setCards(initialCards.data);
       })
       .catch((err) => {
         console.log(err);
@@ -51,19 +51,19 @@ export default function App() {
   useEffect(() => {
     // const token = localStorage.getItem("jwt");
     // if (token) {
-      auth
-        // .checkToken(token)
-        .checkToken('')
-        .then((data) => {
-          if (data.data.email) {
-            setEmail(data.data.email);
-            getInfo();
-            history.push("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    auth
+      // .checkToken(token)
+      .checkToken('')
+      .then((data) => {
+        if (data.data.email) {
+          setEmail(data.data.email);
+          getInfo();
+          history.push("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     // }
   }, [history]);
 
@@ -124,7 +124,7 @@ export default function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
         setIsAddPlacePopupOpen(false);
-        
+
       })
       .catch((err) => {
         console.log(err);
