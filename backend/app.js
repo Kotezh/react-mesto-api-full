@@ -1,6 +1,7 @@
 const express = require('express');
 
-const { PORT = 3000 } = process.env;
+require('dotenv').config();
+const { PORT = 3000, NODE_ENV, JWT_SECRET } = process.env;
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');

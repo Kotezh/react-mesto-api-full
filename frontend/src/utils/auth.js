@@ -43,7 +43,7 @@ export const login = (email, password) => {
   });
 };
 
-export const checkToken = (token) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
