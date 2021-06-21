@@ -17,7 +17,6 @@ module.exports.createCard = (req, res, next) => {
     name, link, owner: req.user._id,
   })
     .then((createdCard) => {
-      // createdCard.toObject();
       const card = createdCard.toObject();
       card.owner = req.user;
       return res.status(201).send({ data: card });
