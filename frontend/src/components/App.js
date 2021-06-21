@@ -118,7 +118,6 @@ export default function App() {
   function handleAddPlace(data) {
     api
       .addNewCard(data.title, data.link)
-      .toObject()
       .then((newCard) => {
         setCards([newCard.data, ...cards]);
         setIsAddPlacePopupOpen(false);
