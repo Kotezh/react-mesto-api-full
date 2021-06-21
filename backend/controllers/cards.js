@@ -16,10 +16,11 @@ module.exports.createCard = (req, res, next) => {
   Card.create({
     name, link, owner: req.user._id,
   })
+    .toObject()
     .then((createdCard) => {
-      const card = createdCard.toObject();
+      const card = createdCard;
       // card.owner = {};
-      card.owner._id = req.user._id;
+      card.owner = req.user;
       return res.status(201).send({ data: card });
     })
     .catch((err) => {
