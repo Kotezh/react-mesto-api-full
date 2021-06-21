@@ -152,6 +152,7 @@ export default function App() {
 
   function handleConfirmClick() {
     setIsConfirmPopupOpen(true);
+    setDeletedCard(card);
     document.addEventListener("keydown", handleEscClose);
   }
 
