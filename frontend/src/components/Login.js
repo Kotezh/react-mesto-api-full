@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Login(props) {
+export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -91,4 +91,3 @@ function Login(props) {
   );
 }
 
-export default Login;

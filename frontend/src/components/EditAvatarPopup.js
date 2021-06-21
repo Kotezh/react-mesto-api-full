@@ -34,7 +34,6 @@ export default function EditAvatarPopup(props) {
           pattern="^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$"
           autoComplete="off"
         />
-        {/* https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg */}
         <span
           className="popup__error"
           id="avatar-link-error"

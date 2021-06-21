@@ -27,7 +27,6 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
         })
         .send({ token: 'ok' });
-      // .end();
     })
     .catch(() => {
       throw new DataError('Неправильные почта или пароль');

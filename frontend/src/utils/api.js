@@ -27,7 +27,7 @@ class Api {
 
   setUserInfo(name, about) {
     return fetch(`${this.url}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this.headers,
       credentials: 'include',
       body: JSON.stringify({
@@ -39,7 +39,7 @@ class Api {
 
   setNewAvatar(avatar) {
     return fetch(`${this.url}/users/me/avatar`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this.headers,
       credentials: 'include',
       body: JSON.stringify({
@@ -50,7 +50,7 @@ class Api {
 
   addNewCard(title, link) {
     return fetch(`${this.url}/cards`, {
-      method: "POST",
+      method: 'POST',
       headers: this.headers,
       credentials: 'include',
       body: JSON.stringify({
@@ -62,7 +62,7 @@ class Api {
 
   deleteCard(cardId) {
     return fetch(`${this.url}/cards/${cardId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this.headers,
       credentials: 'include',
     }).then(this._parseResponse);
@@ -70,7 +70,7 @@ class Api {
 
   toggleLike(cardId, isLiked) {
     return fetch(`${this.url}/cards/${cardId}/likes`, {
-      method: isLiked ? "DELETE" : "PUT",
+      method: isLiked ? 'DELETE' : 'PUT',
       headers: this.headers,
       credentials: 'include',
     }).then(this._parseResponse);
@@ -78,10 +78,9 @@ class Api {
 }
 
 const config = {
-  baseUrl: "https://api.kotezh.mesto.nomoredomains.monster",
+  baseUrl: 'https://api.kotezh.mesto.nomoredomains.monster',
   headers: {
-    // authorization: "d8273a5f-78fb-4b97-a734-1bffa72aa238",
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 };
 

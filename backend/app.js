@@ -3,7 +3,6 @@ const express = require('express');
 require('dotenv').config();
 
 const { PORT = 3000 } = process.env;
-// const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -39,10 +38,9 @@ const options = {
 };
 
 app.use('*', cors(options));
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(requestLogger); // подключаем логгер запросов
+app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -70,7 +68,7 @@ app.use('/', users);
 app.use('/', cards);
 app.use('/', () => { throw new NotFoundError('Данные не найдены'); });
 
-app.use(errorLogger); // подключаем логгер ошибок
+app.use(errorLogger);
 app.use(errors()); // обработчик ошибок celebrate
 
 // централизованный обработчик ошибок

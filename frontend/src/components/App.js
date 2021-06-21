@@ -6,8 +6,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import EditProfilePopup from "./EditProfilePopup";
 import ConfirmationPopup from "./ConfirmationPopup";
-import useConfirmationDialog from "./useConfirmationDialog";
-import { ESC_KEYCODE } from "../utils/utils";
+import { ESC_KEYCODE } from "../utils/constants";
 import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/api";
@@ -28,6 +27,7 @@ export default function App() {
   });
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [deletedCard, setDeletedCard] = useState(null);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setISEditAvatarPopupOpen] = useState(false);
@@ -49,10 +49,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    // const token = localStorage.getItem("jwt");
-    // if (token) {
     auth
-      // .checkToken(token)
       .checkToken('')
       .then((data) => {
         if (data.data.email) {
@@ -64,7 +61,6 @@ export default function App() {
       .catch((err) => {
         console.log(err);
       });
-    // }
   }, [history]);
 
   function handleUpdateUser(data) {
@@ -112,6 +108,7 @@ export default function App() {
         setCards((cards) =>
           cards.filter((currentCard) => currentCard._id !== card._id)
         );
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
@@ -138,16 +135,9 @@ export default function App() {
     }
   }
 
-  function handleOverlayClose(evt) {
-    if (evt.target === evt.currentTarget) {
-      closeAllPopups();
-    }
-  }
-
   function handleEditAvatarClick() {
     setISEditAvatarPopupOpen(true);
     document.addEventListener("keydown", handleEscClose);
-    // popup.addEventListener("click", (evt) => handleOverlayClose(evt));
   }
 
   function handleEditProfileClick() {
@@ -204,7 +194,6 @@ export default function App() {
           setEmail(email);
           getInfo();
           history.push("/");
-          // localStorage.setItem("jwt", data.token);
         }
       })
       .catch((err) => console.log(err));
@@ -229,11 +218,10 @@ export default function App() {
               onEditAvatar={handleEditAvatarClick}
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
-              onConfirm={handleConfirmClick}
               onCardClick={handleCardClick}
               onClose={closeAllPopups}
               onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
+              onCardDelete={handleConfirmClick}
               cards={cards}
               loggedIn={email ? true : false}
             />
@@ -271,11 +259,11 @@ export default function App() {
             onClose={closeAllPopups}
             onUpdateAvatar={handleUpdateAvatar}
           />
-          <useConfirmationDialog
+          <ConfirmationPopup
             isOpen={isConfirmPopupOpen}
             onClose={closeAllPopups}
+            card={deletedCard}
             onCardDelete={handleCardDelete}
-            onConfirm={handleConfirmClick}
           />
         </div>
       </div>

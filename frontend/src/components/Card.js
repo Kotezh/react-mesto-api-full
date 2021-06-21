@@ -1,15 +1,8 @@
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import useConfirmationDialog from "./useConfirmationDialog";
 
 export default function Card(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const { Dialog, onOpen } = useConfirmationDialog({
-    headerText: "Вы уверены?",
-    confirmationButtonText: "Да",
-    onConfirmClick: handleDeleteClick,
-  });
-
   const isOwn = props.card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = `trash element__trash ${isOwn && "element__trash_active"
     }`;
@@ -33,7 +26,6 @@ export default function Card(props) {
   return (
     <li className="element">
       <div className="element__image-wrapper">
-        <Dialog />
         <div className="element__popup" onClick={handleClick}>
           <img
             className="element__image"
@@ -59,8 +51,7 @@ export default function Card(props) {
       <button
         type="button"
         className={cardDeleteButtonClassName}
-        // onClick={handleDeleteClick}
-        onClick={onOpen}
+        onClick={handleDeleteClick}
         aria-label="Trash"
       ></button>
     </li>
