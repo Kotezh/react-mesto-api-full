@@ -78,7 +78,7 @@ class Api {
 }
 
 const config = {
-  baseUrl: 'https://api.kotezh.mesto.nomoredomains.monster',
+  baseUrl: `${document.location.protocol}//api.kotezh.mesto.nomoredomains.monster`,
   headers: {
     'Content-Type': 'application/json',
   },
