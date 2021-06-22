@@ -14,7 +14,7 @@ router.get('/users/:userId', celebrate({
 }), getUser);
 router.patch('/users/me/avatar', celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().required().regex(/^https?:\/\/(www\.)?([\w.]+?)\.([a-z]{2,6})([\w\d\-._~:/?#[\]@!$&'()*+,;=]*)#?$/),
+    avatar: Joi.string().required().regex(/^https?:\/\/(www)?[-.~:/?#[\]@!$&'()*+,;=\w]+#?/),
   }),
 }), updateAvatar);
 router.patch('/users/me', celebrate({
