@@ -64,7 +64,7 @@ export default function AddPlacePopup(props) {
           onChange={handleChange}
           placeholder="Ссылка на картинку"
           required
-          pattern="^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$"
+          pattern="^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)(\?.+)?$"
           autoComplete="off"
         />
         <span className="popup__error" id="place-link-error">

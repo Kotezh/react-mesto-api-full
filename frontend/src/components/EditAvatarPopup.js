@@ -31,7 +31,7 @@ export default function EditAvatarPopup(props) {
           ref={avatarInputRef}
           placeholder="Ссылка на картинку"
           required
-          pattern="^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)$"
+          pattern="^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)(\?.+)?$"
           autoComplete="off"
         />
         <span
