@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.kotezh.mesto.nomoredomains.monster";
+export const BASE_URL = `${document.location.protocol}//api.kotezh.mesto.nomoredomains.monster`;
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
