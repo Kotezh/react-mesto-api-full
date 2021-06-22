@@ -50,7 +50,7 @@ export default function EditProfilePopup(props) {
           required
           minLength="2"
           maxLength="40"
-          pattern="^[a-zA-Zа-яёА-ЯЁ0-9]{2,40}$"
+          pattern="^[a-zA-Zа-яёА-ЯЁ0-9 -]{2,40}$"
           autoComplete="off"
         />
         <span className="popup__error" id="name-error">
@@ -68,7 +68,7 @@ export default function EditProfilePopup(props) {
           required
           minLength="2"
           maxLength="200"
-          pattern="^[a-zA-Zа-яёА-ЯЁ0-9]{2,200}$"
+          pattern="^[a-zA-Zа-яёА-ЯЁ0-9 -]{2,200}$"
           autoComplete="off"
         />
         <span className="popup__error" id="job-error">
