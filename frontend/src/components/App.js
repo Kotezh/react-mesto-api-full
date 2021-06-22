@@ -194,7 +194,8 @@ export default function App() {
         if (data.token === 'ok') {
           setEmail(email);
           getInfo();
-          history.go(0).push("/");
+          localStorage.setItem('jwt', data.token);
+          history.push("/");
         }
       })
       .catch((err) => console.log(err));
