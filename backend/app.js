@@ -26,8 +26,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 const options = {
   origin: [
-    'kotezh.mesto.nomoredomains.monster',
-    '84.252.142.107',
+    /kotezh\.mesto\.nomoredomains\.monster$/,
+    /84\.252\.142\.107$/,
+    // 'http://kotezh.mesto.nomoredomains.monster',
+    // 'https://kotezh.mesto.nomoredomains.monster',
     'http://localhost:3000',
     // 'http://84.252.142.107',
     // 'https://84.252.142.107',
