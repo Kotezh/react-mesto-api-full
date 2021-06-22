@@ -194,7 +194,7 @@ export default function App() {
         if (data.token === 'ok') {
           setEmail(email);
           getInfo();
-          history.push("/");
+          history.go(0).push("/");
         }
       })
       .catch((err) => console.log(err));
