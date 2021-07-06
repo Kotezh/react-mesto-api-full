@@ -27,7 +27,7 @@ export default function Header({ email, onSignOut, }) {
           </button>
         </div>
       )}
-      {currentLocation.pathname === "/" && isMobile && setIsBurgerMenuOpened(false) && (
+      {/* {currentLocation.pathname === "/" && isMobile && setIsBurgerMenuOpened(false) && (
         <button type="button" className="header__burger-menu-btn" openBurger={openBurger}></button>
       )}
       {currentLocation.pathname === "/" && isMobile && setIsBurgerMenuOpened(true) && (
@@ -40,7 +40,7 @@ export default function Header({ email, onSignOut, }) {
             </button>
           </div>
         </>
-      )}
+      )} */}
       {currentLocation.pathname === "/signup" && (
         <Link to="/signin" className="header__link">
           Войти
