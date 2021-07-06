@@ -3,7 +3,7 @@ import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Spinner from "./Spinner";
 
-export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete }) {
+export default function Main({ isLoading, cards, onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
   // const [isLoading, setIsLoading] = useState(true);
   // useEffect(() => {
