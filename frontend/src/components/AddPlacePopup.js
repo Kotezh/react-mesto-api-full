@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function AddPlacePopup(props) {
+export default function AddPlacePopup({ isOpen, onAddPlace, onClose}) {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
 
   useEffect(() => {
     setTitle("");
     setLink("");
-  }, [props.isOpen]);
+  }, [isOpen]);
 
   function handleChange(e) {
     if (e.target.name === "title") {
@@ -20,7 +20,7 @@ export default function AddPlacePopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.onAddPlace({
+    onAddPlace({
       title: title,
       link: link,
     });
@@ -30,8 +30,8 @@ export default function AddPlacePopup(props) {
     <PopupWithForm
       title="Новое место"
       name="add-place"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
+      isOpen={isOpen}
+      onClose={onClose}
       onSubmit={handleSubmit}
       btnName="Создать"
     >
@@ -68,7 +68,7 @@ export default function AddPlacePopup(props) {
           autoComplete="off"
         />
         <span className="popup__error" id="place-link-error">
-          {" "}
+          {/* {" "} */}
           Некорректная ссылка
         </span>
       </label>

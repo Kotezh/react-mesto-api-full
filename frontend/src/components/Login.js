@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Login(props) {
+export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,7 +18,7 @@ export default function Login(props) {
     if (!email || !password) {
       return;
     }
-    props.onLogin(email, password);
+    onLogin(email, password);
     setEmail("");
     setPassword("");
   }

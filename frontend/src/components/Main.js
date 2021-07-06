@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+// import Spinner from "./Spinner";
 
-export default function Main(props) {
-  const currentUser = React.useContext(CurrentUserContext);
+export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete}) {
+  const currentUser = useContext(CurrentUserContext);
+  // const [isLoading, setIsLoading] = useState(false);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  // })
+
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__info">
-          <div className="profile__avatar" onClick={props.onEditAvatar}>
+          <div className="profile__avatar" onClick={onEditAvatar}>
             <img src={currentUser.avatar} className="avatar" alt="аватар" />
           </div>
           <div className="profile__text">
@@ -16,7 +22,7 @@ export default function Main(props) {
               <h1 className="profile__name">{currentUser.name}</h1>
               <button
                 className="profile__btn-edit"
-                onClick={props.onEditProfile}
+                onClick={onEditProfile}
                 type="button"
                 aria-label="Edit"
               ></button>
@@ -26,7 +32,7 @@ export default function Main(props) {
         </div>
         <button
           className="profile__btn-add"
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
           type="button"
           aria-label="Add"
         ></button>
@@ -37,10 +43,10 @@ export default function Main(props) {
             <Card
               key={card._id}
               card={card}
-              onConfirm={props.onConfirm}
-              onCardClick={props.onCardClick}
-              onCardLike={props.onCardLike}
-              onCardDelete={props.onCardDelete}
+              onConfirm={onConfirm}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
             />
           ))}
         </ul>

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-export default function ImagePopup(props) {
+export default function ImagePopup({ card, onClose }) {
   const [link, setLink] = useState("");
   const [name, setName] = useState("");
 
-  const openedClass = props.card ? "popup_opened" : "";
+  const openedClass = card ? "popup_opened" : "";
+  
   function handleOverlayClick(evt) {
     if(evt.target === evt.currentTarget){
-      props.onClose()
+      onClose()
     }
   }
   
   useEffect(() => {
-    if(props.card) {
-      setLink(props.card.link);
-      setName(props.card.name);
+    if(card) {
+      setLink(card.link);
+      setName(card.name);
     }
-  }, [props.card]);
+  }, [card]);
 
   return (
     <section className={`popup popup_type_full-image ${openedClass}`} onClick={handleOverlayClick}>
@@ -29,7 +30,7 @@ export default function ImagePopup(props) {
           type="reset"
           aria-label="Close"
           className="popup__close popup__close_type_full-image"
-          onClick={props.onClose}
+          onClick={onClose}
         ></button>
       </div>
     </section>

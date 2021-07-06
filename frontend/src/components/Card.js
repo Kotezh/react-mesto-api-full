@@ -1,26 +1,27 @@
 import React from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Card(props) {
+export default function Card({ card, onCardClick, onCardDelete, onCardLike }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const isOwn = props.card.owner._id === currentUser._id;
-  const cardDeleteButtonClassName = `trash element__trash ${isOwn && "element__trash_active"
+
+  const isOwner = card.owner._id === currentUser._id;
+  const cardDeleteButtonClassName = `trash element__trash ${isOwner && "element__trash_active"
     }`;
 
-  const isLiked = props.card.likes.some((i) => i._id === currentUser._id);
+  const isLiked = card.likes.some((i) => i._id === currentUser._id);
   const cardLikeButtonClassName = `heart element__heart ${isLiked ? "heart_active" : ""
     }`;
 
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
   }
 
   function handleLikeClick() {
-    props.onCardLike(props.card);
+    onCardLike(card);
   }
 
   function handleDeleteClick() {
-    props.onCardDelete(props.card);
+    onCardDelete(card);
   }
 
   return (
@@ -29,13 +30,13 @@ export default function Card(props) {
         <div className="element__popup" onClick={handleClick}>
           <img
             className="element__image"
-            alt={props.card.title}
-            src={props.card.link}
+            alt={card.title}
+            src={card.link}
           />
         </div>
       </div>
       <div className="element__field">
-        <h2 className="element__title">{props.card.name}</h2>
+        <h2 className="element__title">{card.name}</h2>
         <div className="element__likes">
           <button
             type="button"
@@ -44,7 +45,7 @@ export default function Card(props) {
             onClick={handleLikeClick}
           ></button>
           <span className="element__likes-number">
-            {props.card.likes.length}
+            {card.likes.length}
           </span>
         </div>
       </div>

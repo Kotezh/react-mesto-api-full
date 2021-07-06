@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-export default function EditAvatarPopup(props) {
-  const avatarInputRef = React.useRef();
+export default function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+  const avatarInputRef = useRef();
 
   useEffect(() => {
-    props.isOpen && (avatarInputRef.current.value = "");
-  }, [props.isOpen]);
+    isOpen && (avatarInputRef.current.value = "");
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.onUpdateAvatar(avatarInputRef.current.value);
+    onUpdateAvatar(avatarInputRef.current.value);
   }
 
   return (
     <PopupWithForm
       title="Обновить аватар"
       name="avatar"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
+      isOpen={isOpen}
+      onClose={onClose}
       onSubmit={handleSubmit}
       btnName="Сохранить"
     >
@@ -34,10 +34,7 @@ export default function EditAvatarPopup(props) {
           pattern="^https?:\/\/.+\.(jpg|jpeg|png|gif|bmp)(\?.+)?$"
           autoComplete="off"
         />
-        <span
-          className="popup__error"
-          id="avatar-link-error"
-        >
+        <span className="popup__error" id="avatar-link-error">
           Некорректная ссылка
         </span>
       </label>

@@ -17,6 +17,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import * as auth from "../utils/auth";
+import Spinner from "./Spinner";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -34,6 +35,7 @@ export default function App() {
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const history = useHistory();
 
@@ -49,6 +51,7 @@ export default function App() {
   }
 
   useEffect(() => {
+    setIsLoading(true);
     auth
       .checkToken('')
       .then((data) => {
@@ -60,6 +63,9 @@ export default function App() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false)
       });
   }, [history]);
 
@@ -121,7 +127,6 @@ export default function App() {
       .then((newCard) => {
         setCards([newCard.data, ...cards]);
         setIsAddPlacePopupOpen(false);
-
       })
       .catch((err) => {
         console.log(err);
@@ -194,7 +199,6 @@ export default function App() {
         if (data.token === 'ok') {
           setEmail(email);
           getInfo();
-          // localStorage.setItem('jwt', data.token);
           history.push("/");
         }
       })
@@ -202,14 +206,16 @@ export default function App() {
   }
 
   function handleLogout() {
-    localStorage.removeItem("jwt");
+    // localStorage.removeItem("jwt");
     setEmail("");
     history.push("/signin");
   }
 
   return (
+    
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+      {isLoading ? <Spinner/> : 
         <div className="page__container">
           <Header email={email} onSignOut={handleLogout} />
           <Switch>
@@ -268,7 +274,8 @@ export default function App() {
             onCardDelete={handleCardDelete}
           />
         </div>
+      }
       </div>
     </CurrentUserContext.Provider>
-  );
+    )
 }
