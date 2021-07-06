@@ -51,6 +51,7 @@ export default function App() {
   }
 
   useEffect(() => {
+    console.log('I WANT TO START SPINNER!');
     setIsLoading(true);
     auth
       .checkToken('')
@@ -59,14 +60,14 @@ export default function App() {
           setEmail(data.data.email);
           getInfo();
           history.push("/");
-          setIsLoading(false)
         }
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        // setIsLoading(false)
+        console.log('I WANT TO STOP SPINNER!');
+        setIsLoading(false);
       });
   }, [history]);
 
