@@ -35,7 +35,7 @@ export default function App() {
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
   const history = useHistory();
 
@@ -51,7 +51,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
     auth
       .checkToken('')
       .then((data) => {
