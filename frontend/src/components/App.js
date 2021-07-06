@@ -61,18 +61,12 @@ export default function App() {
         if (data.data.email) {
           setEmail(data.data.email);
           getInfo();
-          // console.log('I WANT TO START SPINNER!');
-          // setIsLoading(true);
           history.push("/");
         }
       })
       .catch((err) => {
         console.log(err);
       })
-      // .finally(() => {
-      //   console.log('I WANT TO STOP SPINNER!');
-      //   setIsLoading(false);
-      // });
   }, [history]);
 
   function handleUpdateUser(data) {
@@ -221,7 +215,6 @@ export default function App() {
 
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        {/* {isLoading ? <Spinner /> : */}
         <div className="page__container">
           <Header email={email} onSignOut={handleLogout} />
           <Switch>
@@ -281,7 +274,6 @@ export default function App() {
             onCardDelete={handleCardDelete}
           />
         </div>
-        {/* } */}
       </div>
     </CurrentUserContext.Provider>
   )

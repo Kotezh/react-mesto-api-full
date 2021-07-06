@@ -5,10 +5,6 @@ import Spinner from "./Spinner";
 
 export default function Main({ isLoading, cards, onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
-  // const [isLoading, setIsLoading] = useState(true);
-  // useEffect(() => {
-  //   setIsLoading(true);
-  // })
 
   return (
     <main className="content">
