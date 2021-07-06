@@ -60,8 +60,8 @@ export default function App() {
           setEmail(data.data.email);
           
           getInfo();
-          console.log('I WANT TO STOP SPINNER!');
-          setIsLoading(false);
+          // console.log('I WANT TO STOP SPINNER!');
+          // setIsLoading(false);
           history.push("/");
         }
       })
@@ -69,8 +69,8 @@ export default function App() {
         console.log(err);
       })
       .finally(() => {
-        // console.log('I WANT TO STOP SPINNER!');
-        // setIsLoading(false);
+        console.log('I WANT TO STOP SPINNER!');
+        setIsLoading(false);
       });
   }, [history]);
 
