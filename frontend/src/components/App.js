@@ -43,9 +43,9 @@ export default function App() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([data, initialCards]) => {
         setCurrentUser(data.data);
+        setCards(initialCards.data);
         console.log('I WANT TO STOP SPINNER!');
         setIsLoading(false);
-        setCards(initialCards.data);
       })
       .catch((err) => {
         console.log(err);
