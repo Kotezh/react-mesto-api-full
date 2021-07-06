@@ -49,10 +49,6 @@ export default function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        console.log('I WANT TO STOP SPINNER!');
-        setIsLoading(false);
       });
   }
 
@@ -65,6 +61,8 @@ export default function App() {
         if (data.data.email) {
           setEmail(data.data.email);
           getInfo();
+          console.log('I WANT TO STOP SPINNER!');
+          setIsLoading(false);
           history.push("/");
         }
       })
