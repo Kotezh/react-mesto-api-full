@@ -51,15 +51,15 @@ export default function App() {
   }
 
   useEffect(() => {
-    // console.log('I WANT TO START SPINNER!');
-    // setIsLoading(true);
+    console.log('I WANT TO START SPINNER!');
+    setIsLoading(true);
     auth
       .checkToken('')
       .then((data) => {
         if (data.data.email) {
           setEmail(data.data.email);
-          console.log('I WANT TO START SPINNER!');
-          setIsLoading(true);
+          // console.log('I WANT TO START SPINNER!');
+          // setIsLoading(true);
           getInfo();
           history.push("/");
         }

@@ -39,7 +39,7 @@ export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, o
       </section>
       <section className="elements">
         {isLoading ?
-          <Spinner /> :
+          <Spinner /> :(
           <ul className="elements__list">
             {cards.map((card) => (
               <Card
@@ -51,7 +51,7 @@ export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, o
                 onCardDelete={onCardDelete}
               />
             ))}
-          </ul>
+          </ul>)
         }
       </section>
     </main>
