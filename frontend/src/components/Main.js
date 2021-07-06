@@ -38,8 +38,8 @@ export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, o
         ></button>
       </section>
       <section className="elements">
-        {/* {isLoading ?
-          <Spinner /> :( */}
+        {isLoading ?
+          <Spinner /> :(
           <ul className="elements__list">
             {cards.map((card) => (
               <Card
@@ -52,8 +52,8 @@ export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, o
               />
             ))}
           </ul>
-          {/* )
-        } */}
+           )
+        } 
       </section>
     </main>
   );
