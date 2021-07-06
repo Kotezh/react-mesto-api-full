@@ -51,16 +51,17 @@ export default function App() {
   }
 
   useEffect(() => {
-    // console.log('I WANT TO START SPINNER!');
-    // setIsLoading(true);
+    console.log('I WANT TO START SPINNER!');
+    setIsLoading(true);
     auth
       .checkToken('')
       .then((data) => {
         if (data.data.email) {
           setEmail(data.data.email);
-          console.log('I WANT TO START SPINNER!');
-          setIsLoading(true);
+          
           getInfo();
+          console.log('I WANT TO STOP SPINNER!');
+          setIsLoading(false);
           history.push("/");
         }
       })
@@ -68,8 +69,8 @@ export default function App() {
         console.log(err);
       })
       .finally(() => {
-        console.log('I WANT TO STOP SPINNER!');
-        setIsLoading(false);
+        // console.log('I WANT TO STOP SPINNER!');
+        // setIsLoading(false);
       });
   }, [history]);
 
