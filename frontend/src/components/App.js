@@ -43,8 +43,8 @@ export default function App() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([data, initialCards]) => {
         setCurrentUser(data.data);
-        console.log('I WANT TO START SPINNER!');
-        setIsLoading(true);
+        console.log('I WANT TO STOP SPINNER!');
+        setIsLoading(false);
         setCards(initialCards.data);
       })
       .catch((err) => {
@@ -61,8 +61,8 @@ export default function App() {
         if (data.data.email) {
           setEmail(data.data.email);
           getInfo();
-          console.log('I WANT TO STOP SPINNER!');
-          setIsLoading(false);
+          console.log('I WANT TO START SPINNER!');
+          setIsLoading(true);
           history.push("/");
         }
       })
