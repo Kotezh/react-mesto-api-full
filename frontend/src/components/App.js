@@ -43,6 +43,8 @@ export default function App() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([data, initialCards]) => {
         setCurrentUser(data.data);
+        console.log('I WANT TO START SPINNER!');
+        setIsLoading(true);
         setCards(initialCards.data);
       })
       .catch((err) => {
@@ -51,8 +53,8 @@ export default function App() {
   }
 
   useEffect(() => {
-    console.log('I WANT TO START SPINNER!');
-    setIsLoading(true);
+    // console.log('I WANT TO START SPINNER!');
+    // setIsLoading(true);
     auth
       .checkToken('')
       .then((data) => {
