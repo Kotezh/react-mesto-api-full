@@ -41,7 +41,7 @@ export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onConfir
         {isLoading ?
           <Spinner /> :
           <ul className="elements__list">
-            {props.cards.map((card) => (
+            {cards.map((card) => (
               <Card
                 key={card._id}
                 card={card}
