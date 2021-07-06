@@ -64,9 +64,9 @@ export default function App() {
       .catch((err) => {
         console.log(err);
       })
-    // .finally(() => {
-    //   setIsLoading(false)
-    // });
+      .finally(() => {
+        setIsLoading(false)
+      });
   }, [history]);
 
   function handleUpdateUser(data) {
@@ -215,66 +215,67 @@ export default function App() {
 
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        {isLoading ? <Spinner /> :
-          <div className="page__container">
-            <Header email={email} onSignOut={handleLogout} />
-            <Switch>
-              <ProtectedRoute
-                exact
-                path="/"
-                component={Main}
-                onEditAvatar={handleEditAvatarClick}
-                onEditProfile={handleEditProfileClick}
-                onAddPlace={handleAddPlaceClick}
-                onCardClick={handleCardClick}
-                onClose={closeAllPopups}
-                onCardLike={handleCardLike}
-                onCardDelete={handleConfirmClick}
-                cards={cards}
-                loggedIn={email ? true : false}
-              />
+        {/* {isLoading ? <Spinner /> : */}
+        <div className="page__container">
+          <Header email={email} onSignOut={handleLogout} />
+          <Switch>
+            <ProtectedRoute
+              exact
+              path="/"
+              component={Main}
+              onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              onClose={closeAllPopups}
+              onCardLike={handleCardLike}
+              onCardDelete={handleConfirmClick}
+              cards={cards}
+              loggedIn={email ? true : false}
+              isLoading={isLoading}
+            />
 
-              <Route path="/signup">
-                <Register onRegister={handleRegister} />
-              </Route>
-              <Route path="/signin">
-                <Login onLogin={handleLogin} />
-              </Route>
-              <Route path="*">
-                <Redirect to="/signin" />
-              </Route>
-            </Switch>
+            <Route path="/signup">
+              <Register onRegister={handleRegister} />
+            </Route>
+            <Route path="/signin">
+              <Login onLogin={handleLogin} />
+            </Route>
+            <Route path="*">
+              <Redirect to="/signin" />
+            </Route>
+          </Switch>
 
-            <Footer />
-            <InfoTooltip
-              onClose={closeAllPopups}
-              isOpen={isInfoTooltipOpen}
-              success={isSuccess}
-            />
-            <ImagePopup onClose={closeAllPopups} card={selectedCard} />
-            <EditProfilePopup
-              isOpen={isEditProfilePopupOpen}
-              onClose={closeAllPopups}
-              onUpdateUser={handleUpdateUser}
-            />
-            <AddPlacePopup
-              isOpen={isAddPlacePopupOpen}
-              onClose={closeAllPopups}
-              onAddPlace={handleAddPlace}
-            />
-            <EditAvatarPopup
-              isOpen={isEditAvatarPopupOpen}
-              onClose={closeAllPopups}
-              onUpdateAvatar={handleUpdateAvatar}
-            />
-            <ConfirmationPopup
-              isOpen={isConfirmPopupOpen}
-              onClose={closeAllPopups}
-              card={deletedCard}
-              onCardDelete={handleCardDelete}
-            />
-          </div>
-        }
+          <Footer />
+          <InfoTooltip
+            onClose={closeAllPopups}
+            isOpen={isInfoTooltipOpen}
+            success={isSuccess}
+          />
+          <ImagePopup onClose={closeAllPopups} card={selectedCard} />
+          <EditProfilePopup
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+          />
+          <AddPlacePopup
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+            onAddPlace={handleAddPlace}
+          />
+          <EditAvatarPopup
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+          />
+          <ConfirmationPopup
+            isOpen={isConfirmPopupOpen}
+            onClose={closeAllPopups}
+            card={deletedCard}
+            onCardDelete={handleCardDelete}
+          />
+        </div>
+        {/* } */}
       </div>
     </CurrentUserContext.Provider>
   )

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-// import Spinner from "./Spinner";
+import Spinner from "./Spinner";
 
-export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete}) {
+export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
-  // const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
   // useEffect(() => {
   //   setIsLoading(true);
   // })
@@ -38,18 +38,21 @@ export default function Main({ onEditAvatar, onEditProfile, onAddPlace, onConfir
         ></button>
       </section>
       <section className="elements">
-        <ul className="elements__list">
-          {props.cards.map((card) => (
-            <Card
-              key={card._id}
-              card={card}
-              onConfirm={onConfirm}
-              onCardClick={onCardClick}
-              onCardLike={onCardLike}
-              onCardDelete={onCardDelete}
-            />
-          ))}
-        </ul>
+        {isLoading ?
+          <Spinner /> :
+          <ul className="elements__list">
+            {props.cards.map((card) => (
+              <Card
+                key={card._id}
+                card={card}
+                onConfirm={onConfirm}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
+              />
+            ))}
+          </ul>
+        }
       </section>
     </main>
   );
