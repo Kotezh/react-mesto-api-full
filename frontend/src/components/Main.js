@@ -3,7 +3,7 @@ import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Spinner from "./Spinner";
 
-export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete, isLoading }) {
+export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, onConfirm, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
   // const [isLoading, setIsLoading] = useState(true);
   // useEffect(() => {
@@ -38,8 +38,8 @@ export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, o
         ></button>
       </section>
       <section className="elements">
-        {isLoading ?
-          <Spinner /> :(
+        {/* {isLoading ?
+          <Spinner /> :( */}
           <ul className="elements__list">
             {cards.map((card) => (
               <Card
@@ -51,8 +51,9 @@ export default function Main({ cards, onEditAvatar, onEditProfile, onAddPlace, o
                 onCardDelete={onCardDelete}
               />
             ))}
-          </ul>)
-        }
+          </ul>
+          {/* )
+        } */}
       </section>
     </main>
   );

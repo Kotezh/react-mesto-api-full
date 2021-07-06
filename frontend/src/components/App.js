@@ -51,15 +51,15 @@ export default function App() {
   }
 
   useEffect(() => {
-    console.log('I WANT TO START SPINNER!');
-    setIsLoading(true);
+    // console.log('I WANT TO START SPINNER!');
+    // setIsLoading(true);
     auth
       .checkToken('')
       .then((data) => {
         if (data.data.email) {
           setEmail(data.data.email);
-          // console.log('I WANT TO START SPINNER!');
-          // setIsLoading(true);
+          console.log('I WANT TO START SPINNER!');
+          setIsLoading(true);
           getInfo();
           history.push("/");
         }
@@ -223,6 +223,8 @@ export default function App() {
         <div className="page__container">
           <Header email={email} onSignOut={handleLogout} />
           <Switch>
+          {isLoading ?
+          <Spinner /> :
             <ProtectedRoute
               exact
               path="/"
@@ -236,8 +238,8 @@ export default function App() {
               onCardDelete={handleConfirmClick}
               cards={cards}
               loggedIn={email ? true : false}
-              isLoading={isLoading}
-            />
+              // isLoading={isLoading}
+            />}
 
             <Route path="/signup">
               <Register onRegister={handleRegister} />
