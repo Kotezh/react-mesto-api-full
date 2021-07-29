@@ -26,19 +26,16 @@ https://kotezh.mesto.nomoredomains.monster
 
 * Установить зависимости
 
-  `cd frontend` и `cd backend`
   `npm install`
 
 * Сделать сборку проекта 
 
-  `cd frontend`
   `npm run build`
  
 * Перезапустить сервер
 
-  `cd backend`
-  `pm2 restart app`
+  `npm start`
 
 * Запустить проект
 
-  Пройти по ссылке: https://kotezh.mesto.nomoredomains.monster
+  `http://localhost:3000/`
