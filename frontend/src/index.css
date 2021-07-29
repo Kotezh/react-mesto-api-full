@@ -20,8 +20,6 @@
 @import url("./blocks/footer/__copyright/footer__copyright.css");
 @import url("./blocks/header/header.css");
 @import url("./blocks/header/__logo/header__logo.css");
-@import url("./blocks/header/__burger-menu-btn/header__burger-menu-btn.css");
-@import url("./blocks/header/__burger-menu-close-btn/header__burger-menu-close-btn.css");
 @import url("./blocks/header/__link/header__link.css");
 @import url("./blocks/header/__text/header__text.css");
 @import url("./blocks/header/__logged/header__logged.css");

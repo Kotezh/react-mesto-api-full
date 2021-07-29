@@ -17,7 +17,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import * as auth from "../utils/auth";
-import Spinner from "./Spinner";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -44,7 +43,6 @@ export default function App() {
       .then(([data, initialCards]) => {
         setCurrentUser(data.data);
         setCards(initialCards.data);
-        console.log('I WANT TO STOP SPINNER!');
         setIsLoading(false);
       })
       .catch((err) => {
@@ -53,7 +51,6 @@ export default function App() {
   }
 
   useEffect(() => {
-    console.log('I WANT TO START SPINNER!');
     setIsLoading(true);
     auth
       .checkToken('')
@@ -206,7 +203,7 @@ export default function App() {
   }
 
   function handleLogout() {
-    // localStorage.removeItem("jwt");
+    localStorage.removeItem("jwt");
     setEmail("");
     history.push("/signin");
   }
