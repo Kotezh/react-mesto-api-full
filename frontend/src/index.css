@@ -85,4 +85,5 @@
 @import url("./blocks/sign/__btn-submit/sign__btn-submit.css");
 @import url("./blocks/sign/__form-link-wrapper/sign__form-link-wrapper.css");
 @import url("./blocks/spinner/spinner.css");
-
+@import url("./blocks/burger/burger.css");
+@import url("./blocks/burger-button/burger-button.css");

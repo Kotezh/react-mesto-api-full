@@ -33,6 +33,8 @@ export default function App() {
   const [isEditAvatarPopupOpen, setISEditAvatarPopupOpen] = useState(false);
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -53,7 +55,7 @@ export default function App() {
   useEffect(() => {
     setIsLoading(true);
     auth
-      .checkToken('')
+      .checkToken("")
       .then((data) => {
         if (data.data.email) {
           setEmail(data.data.email);
@@ -63,14 +65,18 @@ export default function App() {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }, [history]);
 
   function handleUpdateUser(data) {
     api
       .setUserInfo(data.name, data.about)
       .then((res) => {
-        setCurrentUser({ ...currentUser, name: res.data.name, about: res.data.about });
+        setCurrentUser({
+          ...currentUser,
+          name: res.data.name,
+          about: res.data.about,
+        });
         setIsEditProfilePopupOpen(false);
       })
       .catch((err) => {
@@ -163,6 +169,11 @@ export default function App() {
     document.addEventListener("keydown", handleEscClose);
   }
 
+  function handleBurgerClick() {
+    setIsBurgerOpen(true);
+    document.addEventListener("keydown", handleEscClose);
+  }
+
   function closeAllPopups() {
     setISEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
@@ -170,6 +181,7 @@ export default function App() {
     setIsConfirmPopupOpen(false);
     setSelectedCard(null);
     setIsInfoTooltipOpen(false);
+    setIsBurgerOpen(false)
     document.removeEventListener("keydown", handleEscClose);
   }
 
@@ -193,7 +205,7 @@ export default function App() {
     auth
       .login(email, password)
       .then((data) => {
-        if (data.token === 'ok') {
+        if (data.token === "ok") {
           setEmail(email);
           getInfo();
           history.push("/");
@@ -209,11 +221,16 @@ export default function App() {
   }
 
   return (
-
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__container">
-          <Header email={email} onSignOut={handleLogout} />
+          <Header
+            email={email}
+            onBurgerClick={handleBurgerClick}
+            onSignOut={handleLogout}
+            onClose={closeAllPopups}
+            isOpen={isBurgerOpen}
+          />
           <Switch>
             <ProtectedRoute
               exact
@@ -273,5 +290,5 @@ export default function App() {
         </div>
       </div>
     </CurrentUserContext.Provider>
-  )
+  );
 }

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../blocks/logo/logo.svg";
 import { useLocation, Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
-export default function Header({ email, onSignOut }) {
+export default function Header({ email, onSignOut, onClose, onBurgerClick, isOpen }) {
   const currentLocation = useLocation();
+  const isMobile = useMediaQuery({ maxWidth: 425 });
 
   return (
     <header className="header">
@@ -16,6 +18,17 @@ export default function Header({ email, onSignOut }) {
           </button>
         </div>
       )}
+      {currentLocation.pathname === "/" && isMobile && (
+        <div className="header__logged">
+          <button
+            className="burger-button"
+            type="button"
+            aria-label="Open"
+            onClick={onBurgerClick}
+          ></button>
+        </div>
+      )}
+      <BurgerMenu isOpen={isOpen} onClose={onClose} onSignOut={onSignOut} email={email}/>
       {currentLocation.pathname === "/signup" && (
         <Link to="/signin" className="header__link">
           Войти

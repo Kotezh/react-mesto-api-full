@@ -1,0 +1,125 @@
+.burger-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 142px;
+  /* height: 100vh; */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 400ms, opacity 400ms linear;
+  z-index: 500;
+}
+
+.burger-menu_opened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 600ms, opacity 600ms linear;
+}
+
+.burger-menu__container {
+  padding: 159px 90px 90px;
+  margin: 0 0 0 auto;
+  /* min-width: 300px;
+  max-width: 520px; */
+  width: 100%;
+  box-sizing: border-box;
+  height: 142px;
+  /* height: 100vh; */
+  background-color: #000000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.burger-menu__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.burger-menu__close {
+  background: url(./close-burger.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  right: 29px;
+  top: 29px;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+}
+
+.burger-menu__close:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.burger-menu__link {
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.burger-menu__link:hover {
+  opacity: 0.7;
+}
+
+.burger-menu__link_active {
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 4px;
+}
+
+.burger-menu__link:not(:last-child) {
+  margin-bottom: 28px;
+}
+
+.burger-menu__link_active:not(:last-child) {
+  margin-bottom: 22px;
+}
+
+@media screen and (max-width: 380px) {
+  .burger-menu__container {
+    padding: 144px 10px 46px;
+    margin: 0;
+  }
+  .burger-menu__close {
+    right: 22px;
+    top: 22px;
+  }
+  .burger-menu__link_active {
+    padding-bottom: 7px;
+  }
+  .burger-menu__link:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  .burger-menu__link_active:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}

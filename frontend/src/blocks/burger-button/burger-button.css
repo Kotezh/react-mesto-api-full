@@ -1,0 +1,19 @@
+
+.burger-button {
+  width: 24px;
+  height: 21px;
+  background: url(./burger-icon.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.burger-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  outline: none;
+}
